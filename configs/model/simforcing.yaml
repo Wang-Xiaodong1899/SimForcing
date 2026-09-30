@@ -1,0 +1,90 @@
+_target_: simforcing.runtime.create_simforcing
+model_id: ${oc.env:WAN_MODEL_DIR,./checkpoints/Wan2.2-TI2V-5B}
+tokenizer_model_id: ${oc.env:WAN_TOKENIZER_DIR,./checkpoints/Wan2.1-T2V-1.3B}
+tokenizer_max_len: 128
+load_text_encoder: false
+proprio_dim: 7
+redirect_common_files: false
+mot_checkpoint_mixed_attn: true
+sim_cond_prob: 0.5
+delta_lambda_cond_on: 1.0
+sim_cond_drift_prob: 0.0
+sim_cond_drift_scale_range:
+- 0.02
+- 0.08
+delta_spatial_pool: 1
+delta_cosine: false
+delta_sigma_weight_mode: fm
+sim_cond_init_scale: 0.0
+action_dit_pretrained_path: ${oc.env:ACTION_DIT_CHECKPOINT,./checkpoints/action_dit.pt}
+skip_dit_load_from_pretrain: false
+action_dropout_prob: 0.0
+first_frame_dropout_prob: 0.0
+sim_latent_noise_prob: 0.4
+sim_latent_noise_alpha_range:
+- 0.5
+- 0.9
+sim_latent_noise_sigma_range:
+- 0.1
+- 0.3
+# Model-only .pt checkpoint from stage-1 simulation world model training.
+frozen_video_expert_checkpoint: ${oc.env:SIM_TEACHER_CHECKPOINT,./checkpoints/sim_teacher.pt}
+frozen_action_dit_config: null
+build_frozen_teacher: true
+delta_dropout_prob: 0.0
+sim_cond_on_syn_branch: false
+sim_cond_cfg_scale: 1.0
+video_dit_config:
+  has_image_input: false
+  patch_size:
+  - 1
+  - 2
+  - 2
+  in_dim: 48
+  hidden_dim: 3072
+  ffn_dim: 14336
+  freq_dim: 256
+  text_dim: 4096
+  out_dim: 48
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  eps: 1.0e-06
+  seperated_timestep: true
+  require_clip_embedding: false
+  require_vae_embedding: false
+  fuse_vae_embedding_in_latents: true
+  use_gradient_checkpointing: true
+  video_attention_mask_mode: first_frame_causal
+  action_conditioned: false
+  action_dim: 7
+  action_group_causal_mask_mode: group_diagonal
+action_dit_config:
+  action_dim: 7
+  hidden_dim: 1024
+  ffn_dim: 4096
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  text_dim: 4096
+  freq_dim: 256
+  eps: 1.0e-06
+  use_gradient_checkpointing: true
+video_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+action_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+loss:
+  lambda_video: 1.0
+  lambda_action: 0.0
+  lambda_delta: 0.5
+  lambda_real: 1.0
+  lambda_syn: 0.1
+  lambda_diffusion_real: null
+  lambda_diffusion_syn: null
+  lambda_delta_real: null
+  lambda_delta_syn: null

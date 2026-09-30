@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simforcing"
+version = "0.1.0"
+description = "SimForcing: simulation-guided action-conditioned video generation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = [
+  "torch>=2.6", "torchvision>=0.21",
+  "accelerate==1.12.0", "hydra-core==1.3.2", "omegaconf==2.3.0",
+  "einops==0.8.1", "numpy>=1.26,<3", "pillow>=10",
+  "decord==0.6.0", "imageio==2.37.0", "imageio-ffmpeg==0.6.0",
+  "safetensors==0.5.3", "transformers==4.49.0", "sentencepiece>=0.2",
+  "ftfy>=6", "regex>=2024", "tqdm>=4.66", "rich>=13",
+  "huggingface-hub>=0.26,<1.0", "modelscope>=1.20",
+]
+
+[project.optional-dependencies]
+train = ["deepspeed==0.18.5", "wandb==0.23.1"]
+prepare = ["tensorflow>=2.15", "tensorflow-datasets>=4.9", "transforms3d>=0.4"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["simforcing*"]

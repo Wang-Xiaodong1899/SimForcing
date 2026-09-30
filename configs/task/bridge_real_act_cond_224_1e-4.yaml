@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+- override /data: bridge_real
+- override /model: action_conditioned
+- _self_
+batch_size: 16
+num_workers: 8
+model:
+  mot_checkpoint_mixed_attn: true
+  action_dropout_prob: 0.1
+lr_scheduler_type: cosine
+learning_rate: 0.0001
+num_epochs: 20
+max_steps: null
+log_every: 100
+save_every: 4000
+eval_every: 500
+gradient_accumulation_steps: 1
+weight_decay: 0.01
+resume: null

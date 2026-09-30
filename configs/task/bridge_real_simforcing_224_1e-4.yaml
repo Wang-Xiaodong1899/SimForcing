@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+- override /data: bridge_paired
+- override /model: simforcing
+- _self_
+batch_size: 16
+num_workers: 8
+model:
+  mot_checkpoint_mixed_attn: true
+  sim_cond_prob: 0.7
+  delta_lambda_cond_on: 1.0
+  sim_cond_init_scale: 0.0
+  sim_cond_drift_prob: 0.0
+  action_dropout_prob: 0.0
+  first_frame_dropout_prob: 0.0
+  delta_dropout_prob: 0.0
+  loss:
+    lambda_video: 1.0
+    lambda_action: 0.0
+    lambda_delta: 0.5
+    lambda_real: 1.0
+    lambda_syn: 0.1
+  sim_cond_cfg_scale: 1.0
+lr_scheduler_type: cosine
+learning_rate: 0.0001
+num_epochs: 20
+max_steps: null
+log_every: 10
+save_every: 4000
+eval_every: 0
+gradient_accumulation_steps: 1
+weight_decay: 0.01
+# Initialize the student from the same stage-1 weights as the frozen teacher.
+resume: ${model.frozen_video_expert_checkpoint}

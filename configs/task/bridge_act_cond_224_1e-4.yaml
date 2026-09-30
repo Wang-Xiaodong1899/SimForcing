@@ -1,0 +1,24 @@
+# @package _global_
+
+# Stage 1: train an action-conditioned simulation world model.
+# Its model-only .pt checkpoint initializes both the stage-2 student and teacher.
+
+defaults:
+- override /data: bridge_sim
+- override /model: action_conditioned
+- _self_
+batch_size: 16
+num_workers: 8
+model:
+  mot_checkpoint_mixed_attn: true
+  action_dropout_prob: 0.1
+lr_scheduler_type: cosine
+learning_rate: 0.0001
+num_epochs: 20
+max_steps: null
+log_every: 50
+save_every: 8000
+eval_every: 50000
+gradient_accumulation_steps: 1
+weight_decay: 0.01
+resume: null

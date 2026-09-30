@@ -1,0 +1,54 @@
+# Simulation frames are the left half of each paired video.
+# Reserve 5% of the training-directory episodes for stage-1 validation.
+
+train:
+  _target_: simforcing.datasets.bridge_v2.BridgeV2VideoDataset
+  dataset_dirs:
+  - ${oc.env:BRIDGE_TRAIN_DIR,./data/bridge_train}
+  action_dim: 7
+  proprio_dim: 7
+  num_frames: 21
+  global_sample_stride: 1
+  action_video_freq_ratio: 1
+  samples_per_episode: 30
+  video_size:
+  - 224
+  - 320
+  video_root: null
+  use_left_half_only: true
+  val_set_proportion: 0.05
+  is_training_set: true
+  norm_mode: min/max
+  text_embedding_cache_dir: ${oc.env:BRIDGE_TEXT_CACHE,./data/text_embeds/bridge_train}
+  context_len: 128
+  override_instruction: null
+  processor:
+    action_output_dim: ${data.train.action_dim}
+    proprio_output_dim: ${data.train.proprio_dim}
+  use_right_half_only: false
+  random_half: false
+  paired_halves: false
+val:
+  _target_: simforcing.datasets.bridge_v2.BridgeV2VideoDataset
+  dataset_dirs: ${data.train.dataset_dirs}
+  action_dim: ${data.train.action_dim}
+  proprio_dim: ${data.train.proprio_dim}
+  num_frames: ${data.train.num_frames}
+  global_sample_stride: ${data.train.global_sample_stride}
+  action_video_freq_ratio: ${data.train.action_video_freq_ratio}
+  samples_per_episode: ${data.train.samples_per_episode}
+  video_size: ${data.train.video_size}
+  video_root: ${data.train.video_root}
+  use_left_half_only: ${data.train.use_left_half_only}
+  val_set_proportion: ${data.train.val_set_proportion}
+  is_training_set: false
+  norm_mode: ${data.train.norm_mode}
+  text_embedding_cache_dir: ${data.train.text_embedding_cache_dir}
+  context_len: ${data.train.context_len}
+  override_instruction: ${data.train.override_instruction}
+  processor:
+    action_output_dim: ${data.train.action_dim}
+    proprio_output_dim: ${data.train.proprio_dim}
+  use_right_half_only: false
+  random_half: false
+  paired_halves: false
