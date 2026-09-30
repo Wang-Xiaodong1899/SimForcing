@@ -1,8 +1,8 @@
 # SimForcing: Distilling Simulation Motion Priors into Real-Domain Robot World Models
 
 <p align="center">
-<a href="https://wang-xiaodong1899.github.io/assets/SimForcing.pdf"><img alt="Paper" src="https://img.shields.io/badge/-Paper-B31B1B?logo=arxiv&amp;logoColor=white&amp;labelColor=555"></a>
-<a href="https://wang-xiaodong1899.github.io/SimForcing/"><img alt="Project Page" src="https://img.shields.io/badge/-Project%20Page-1b5443?logo=googlechrome&amp;logoColor=white&amp;labelColor=555"></a>
+<a href="https://wang-xiaodong1899.github.io/assets/SimForcing.pdf" target="_blank" rel="noopener noreferrer"><img alt="Paper" src="https://img.shields.io/badge/-Paper-B31B1B?logo=arxiv&amp;logoColor=white&amp;labelColor=555"></a>
+<a href="https://wang-xiaodong1899.github.io/SimForcing/" target="_blank" rel="noopener noreferrer"><img alt="Project Page" src="https://img.shields.io/badge/-Project%20Page-1b5443?logo=googlechrome&amp;logoColor=white&amp;labelColor=555"></a>
 </p>
 
 **TL;DR:** SimForcing learns motion priors from a simulation world model and transfers them to real-domain robot video prediction through latent-motion distillation and optional simulation conditioning.
