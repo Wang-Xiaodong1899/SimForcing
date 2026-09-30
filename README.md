@@ -15,6 +15,12 @@
   <em>Figure 1. Comparison of training paradigms for action-conditioned robot world models.</em>
 </p>
 
+## From motion priors to visual prediction
+
+<p align="center">
+  <img src="assets/motion-priors-demo.gif" alt="SimForcing simulation prediction and real prediction alongside real ground truth for the task: Place the strawberry in the pot." width="100%">
+</p>
+
 ## Method Overview
 
 <p align="center">
