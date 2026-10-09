@@ -1,7 +1,7 @@
 # SimForcing: Distilling Simulation Motion Priors into Real-Domain Robot World Models
 
 <p align="center">
-<a href="https://wang-xiaodong1899.github.io/assets/SimForcing.pdf" target="_blank" rel="noopener noreferrer"><img alt="Paper" src="https://img.shields.io/badge/-Paper-B31B1B?logo=arxiv&amp;logoColor=white&amp;labelColor=555"></a>
+<a href="https://arxiv.org/abs/2610.06598" target="_blank" rel="noopener noreferrer"><img alt="Paper" src="https://img.shields.io/badge/-Paper-B31B1B?logo=arxiv&amp;logoColor=white&amp;labelColor=555"></a>
 <a href="https://wang-xiaodong1899.github.io/SimForcing/" target="_blank" rel="noopener noreferrer"><img alt="Project Page" src="https://img.shields.io/badge/-Project%20Page-1b5443?logo=googlechrome&amp;logoColor=white&amp;labelColor=555"></a>
 </p>
 
@@ -178,9 +178,11 @@ The Python API exposes `SimForcing.infer_sim_latents()` and `SimForcing.infer_vi
 If you find SimForcing useful in your research, please cite:
 
 ```bibtex
-@article{wangsimforcing,
-  title={{SimForcing}: Distilling Simulation Motion Priors into Real-Domain Robot World Models},
-  author={Wang, Xiaodong and Li, Tianle and Song, Chuanxin and Xie, Junliang and Zhong, Zhanmi and Wu, Suiying and Peng, Peixi}
+@article{wang2026simforcing,
+  title={SimForcing: Distilling Simulation Motion Priors into Real-Domain Robot World Models},
+  author={Wang, Xiaodong and Li, Tianle and Song, Chuanxin and Xie, Junliang and Zhong, Zhanmi and Wu, Suiying and Peng, Peixi},
+  journal={arXiv preprint arXiv:2610.06598},
+  year={2026}
 }
 ```
 
